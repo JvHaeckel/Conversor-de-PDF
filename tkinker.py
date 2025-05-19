@@ -8,7 +8,15 @@ from tkinter import filedialog, messagebox
 arquivo = r("")
 dataframe = tabula
 
-
+def processamento():
+    
+    
+    
+    
+    
+    
+    return
+    
 
 ################ Interface gráfica ################
 
@@ -23,7 +31,7 @@ tk.Label(janela, text="Converter PDF para Excel", font=("Helvetica", 14, "bold")
 
 
 tk.Label(janela, text="Escolha o arquivo apenas em PDF:", font=("Helvetica", 12, "bold")).pack(pady=(20, 5))
-botao = tk.Button(janela, text="Calcular Avos", command=processar, font=("Helvetica", 10, "bold"))
+botao = tk.Button(janela, text="Calcular Avos", command=processamento, font=("Helvetica", 10, "bold"))
 botao.pack(pady=10)
 
 janela.mainloop()
