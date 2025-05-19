@@ -18,7 +18,13 @@ janela.title("Conversor de Pdf")
 
 # Título maior em negrito
 
-tk.Label(janela, text = )
+# Título maior e em negrito
+tk.Label(janela, text="Converter PDF para Excel", font=("Helvetica", 14, "bold")).pack(pady=(10, 15))
 
 
+tk.Label(janela, text="Escolha o arquivo apenas em PDF:", font=("Helvetica", 12, "bold")).pack(pady=(20, 5))
+botao = tk.Button(janela, text="Calcular Avos", command=processar, font=("Helvetica", 10, "bold"))
+botao.pack(pady=10)
+
+janela.mainloop()
 
