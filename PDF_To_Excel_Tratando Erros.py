@@ -40,9 +40,7 @@ def processamento():
         dataframe = tabula.read_pdf(
             caminho_arquivo, 
             pages='all', 
-            multiple_tables = True,
-            stream = True,
-            guess = False
+            multiple_tables = True
             )
     
         # Verifica se tem tabelas no PDF
@@ -68,8 +66,9 @@ def processamento():
         else:
             messagebox.showwarning("Cancelado", "Operação cancelada pelo usuário.")
         
+        # Tratando erro de deixar arquivo do excel a ser salvo em Aberto.
     except PermissionError:
-        messagebox.showerror("Permisssão negada, você deve estar mantendo arquivo em excel de destino em aberto")    
+        messagebox.showerror("Permisssão negada", "Você deve estar mantendo arquivo em excel de destino em aberto")    
         
     except Exception as e:
         messagebox.showerror("Erro", f"Erro ao processar o arquivo:\n{e}")
