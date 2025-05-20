@@ -19,19 +19,25 @@ def stop_progress():
     botao.config(state='normal')
     janela.update_idletasks()
     
+    
 ################ Pegando Documento da Interface + LENDO O PDF ################
 
+
 def processamento():
+    
     start_progress()
 
     ################ Pegando Documento da Interface  ################
-    caminho_arquivo = filedialog.askopenfilename(
+    
+    # Abre janela para o user pegar arquivo em PDF
+    caminho_arquivo = filedialog.askopenfilename(  # filedialog: Permite abrir janelas para o usuário selecionar arquivos ou escolher onde salvar.
         title="Selecione arquivo em PDF: ",
         filetypes=[("Arquivo PDF", "*.pdf")]
     )
      
+    # Se o usuário não escolher nada exibe esse aviso e encerra o processo 
     if not caminho_arquivo:
-         messagebox.showwarning("Aviso", "Nenhum arquivo foi selecionado.")
+         messagebox.showwarning("Aviso", "Nenhum arquivo foi selecionado.") # messagebox: Permite exibir caixas de mensagem (avisos, erros, informações)
          stop_progress()
          return
     
@@ -40,7 +46,7 @@ def processamento():
         # A função read_pdf do Tabulas lê tabelas do PDF e retorna um DataFrame
         dataframe = tabula.read_pdf(
             caminho_arquivo, 
-            pages='all', 
+            pages='all',            # pages='all': Significa que o Tabula deve procurar tabelas em todas as páginas do PDF.
             multiple_tables = True
             )
     
@@ -50,8 +56,8 @@ def processamento():
             stop_progress()
             return
         
-        # Combina todas as tabelas em um único DataFrame
-        dataframe_complete = pd.concat(dataframe)
+        # Combina todas as tabelas em um único DataFrame usando o pd.concat - é uma função do Pandas para unir DataFrames.
+        dataframe_complete = pd.concat(dataframe)   
         
          # Abre a janela para salvar o arquivo, forçando extensão .xlsx
         caminho_saida = filedialog.asksaveasfilename(
@@ -60,9 +66,18 @@ def processamento():
             title="Salvar arquivo como:"
         )
         
+        
+        ###################### Tratamento de Linhas e colunas vazias ######################
+        
+        dataframe_complete = dataframe_complete.applymap(lambda x: x.strip() if isinstance(x, str) else x) # Remove espaços em branco extras de todas as células (aplica para strings)
+        dataframe_complete = dataframe_complete.dropna(how='all', axis=1)  # Remove colunas vazias
+        dataframe_complete = dataframe_complete.dropna(how='all', axis=0)  # Remove linhas vazias
+        
         if caminho_saida:
+            
            # Converte o Dataframe para Excel
             dataframe_complete.to_excel(caminho_saida, index=False)
+            
             messagebox.showinfo("Sucesso", f"Arquivo salvo com sucesso em:\n{caminho_saida}")
         else:
             messagebox.showwarning("Cancelado", "Operação cancelada pelo usuário.")
