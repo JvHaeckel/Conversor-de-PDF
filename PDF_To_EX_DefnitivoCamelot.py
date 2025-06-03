@@ -1,5 +1,6 @@
 # Converter PDF para excel usando Python. Deixei de usar o tabulas trocando por Camelot (que usa também o ghostScript)
 # Coloquei tudo de Log em 03/06/25
+
 import pandas as pd
 import camelot  # Substituindo tabula por camelot
 import tkinter as tk 
