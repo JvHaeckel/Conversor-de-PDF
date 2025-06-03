@@ -1,5 +1,6 @@
 # Converter PDF para Excel usando Python. Deixei de usar o tabulas trocando por Camelot (que usa também o ghostScript)
 # Mesmo código do PDF_To_EX_DefnitivoCamelot.py sendo que modularizado em 03/06/25
+
 import pandas as pd
 import camelot  # Substituindo tabula por camelot
 import tkinter as tk

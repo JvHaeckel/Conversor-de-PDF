@@ -5,10 +5,14 @@
 # Coloquei tudo de Log em 03/06/25
 
 import pandas as pd
-import camelot  # Substituindo tabula por camelot
 import tkinter as tk 
 from tkinter import filedialog, messagebox, ttk
 import logging
+
+import camelot  # Substituindo tabula por camelot
+# Configura o caminho absoluto para o Ghostscript (ajuste para seu caminho)
+# camelot.settings.GHOSTSCRIPT_PATH = r"C:\Program Files\gs\gs10.05.1\bin\gswin64c.exe"
+
 
 # Para fazer o logg funcionar temos que por essa estrutura no início do código
 logging.basicConfig(level=logging.INFO)
