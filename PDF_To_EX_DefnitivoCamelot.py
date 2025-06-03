@@ -1,3 +1,6 @@
+# Estou usando esse Estou usando esse Estou usando esse Estou usando esse Estou usando esse
+# Estou usando esse Estou usando esse Estou usando esse Estou usando esse Estou usando esse
+
 # Converter PDF para excel usando Python. Deixei de usar o tabulas trocando por Camelot (que usa também o ghostScript)
 # Coloquei tudo de Log em 03/06/25
 
