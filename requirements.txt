@@ -1,0 +1,9 @@
+pandas>=1.5
+python-docx
+openpyxl
+tabula-py
+requests
+mysql-connector-python
+XlsxWriter
+camelot-py[cv]
+pdfplumber
